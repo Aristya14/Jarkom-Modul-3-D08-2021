@@ -97,7 +97,7 @@ pada Jipangu jalankan command `apt-get update` dan `apt-get install isc-dhcp-ser
 Kemudian setting `INTERFACES` yang digunakan oleh Jipangu dengan mengedit file `/etc/default/isc-dhcp-server` dan menambahkan `eth0`.
 (letakkan di .bashrc agar dijalankan saat di start)
 
-![1](./images/1.jpg)
+![1](./img/1.jpg)
 
 *Water7*
 pada Water7  command `apt-get update` dan `apt-get install squid -y` untuk menginstall squid.(letakkan di .bashrc agar dijalankan saat di start)
@@ -111,7 +111,7 @@ pada Foosha jalankan command `apt-get update` dan `apt-get install isc-dhcp-rela
 
 lalu mengedit isi file `/etc/default/isc-dhcp-relay` dengan menambahkan `SERVER = "10.25.2.4"` yaitu server jipangu sebagai dhcp server dan mengedit bagian interfaces dengan `INTERFACES = "eth1 eth2 eth3"`
 
-![1](./images/2.jpg)
+![1](./img/2.jpg)
 
 setelah itu jalankan command `service isc-dhcp-relay restart` pada console foosha.
 
@@ -183,7 +183,7 @@ Lakukan restart pada client dan cek dengan melakukan command `ip a` untuk mengec
 
 contoh client loguetown dan skypie.
 
-![1](./images/3.1.jpg)
+![1](./img/3.1.jpg)
 
-![1](./images/3.2.jpg)
+![1](./img/3.2.jpg)
 
