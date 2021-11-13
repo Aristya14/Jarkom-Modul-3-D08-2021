@@ -280,3 +280,13 @@ kemudian lakukan `service squid restart`
 
 *Loguetown*
 Jalankan di command `lynx google.com`
+
+Masih dalam jam akses : 
+
+
+![10](./img/10.1.png)
+
+Selain jam akses :
+
+
+![10](./img/10.2.png)
