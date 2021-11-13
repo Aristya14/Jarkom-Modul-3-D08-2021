@@ -193,5 +193,88 @@ Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.yyy.com denga
 ### Jawab
 *Water7*
 
-Pada water7 di command jalankan `apt-get update` dan `apt-get install `apt-get install squid`
+Pada water7 di command jalankan `apt-get update` dan `apt-get install `apt-get install squid`.
+Lalu backup file dengan menjalankan `mv /etc/squid/squid.conf /etc/squid/squid.conf.bak`.
 
+Lalu edit file `/etc/squid/squid.conf` di water7 dengan menambahkan:
+
+```bash
+http_port 5000
+visible_hostname jualbelikapal.d08.com
+http_access allow ALL
+```
+kemudian lakukan `service squid restart`
+
+*Loguetown*
+
+Lalu pada Loguetown di command jalankan `apt-get update` dan `apt-get install lynx`
+dan coba jalankan di command `lynx google.com`
+
+## NOMOR 9
+Agar transaksi jual beli lebih aman dan pengguna website ada dua orang, proxy dipasang autentikasi user proxy dengan enkripsi MD5 dengan dua username, yaitu luffybelikapalyyy dengan password luffy_yyy dan zorobelikapalyyy dengan password zoro_yyy.
+
+### Jawab
+*Water7*
+
+Pada water7 di command jalankan `install apache2-utils -y`.
+
+Kemudian membuat username dan password untuk user, dengan menjalankan command:
+
+`htpasswd -c /etc/squid/passwd luffybelikapald08`
+dan password : `luffy_d08`
+
+`htpasswd /etc/squid/passwd zorobelikapald08`
+dan password : `zoro_d08`
+
+Lalu edit file `/etc/squid/squid.conf` di water7 dengan menambahkan:
+```bash
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access allow USERS
+```
+
+kemudian lakukan `service squid restart`
+
+*Loguetown*
+sebelum melakukan percobaan lynx, jangan lupa untuk mengeksport proxy dari water7 `export http_proxy="http://10.25.2.3:5000"`. 
+Kemudian lakukan `lynx google.com`
+
+## NOMOR 10
+Transaksi jual beli tidak dilakukan setiap hari, oleh karena itu akses internet dibatasi hanya dapat diakses setiap hari Senin-Kamis pukul 07.00-11.00 dan setiap hari Selasa-Jum’at pukul 17.00-03.00 keesokan harinya (sampai Sabtu pukul 03.00)
+
+### Jawab
+*Water7*
+
+Edit file `/etc/squid/acl.conf` untuk melakukan batas akses sebagai berikut 
+
+```bash
+    acl AVAILABLE_WORKING time MTWH 07:00-11:00
+    acl AVAILABLE_WORKING time TWHF 17:00-23:59
+    acl AVAILABLE_WORKING time WHFA 00:00-03:00
+```
+
+Kemudian edit file `/etc/squid/squid.conf` 
+
+```bash
+include /etc/squid/acl.conf
+
+http_port 5000
+visible_hostname jualbelikapal.d08.com
+
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access allow USERS AVAILABLE_WORKING
+http_access deny all
+```
+kemudian lakukan `service squid restart`
+
+*Loguetown*
+Jalankan di command `lynx google.com`
