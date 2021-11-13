@@ -187,3 +187,11 @@ contoh client loguetown dan skypie.
 
 ![1](./img/3.2.jpg)
 
+## NOMOR 8
+Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.yyy.com dengan port yang digunakan adalah 5000
+
+### Jawab
+*Water7*
+
+Pada water7 di command jalankan `apt-get update` dan `apt-get install `apt-get install squid`
+
