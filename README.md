@@ -290,3 +290,8 @@ Selain jam akses :
 
 
 ![10](./img/10.2.png)
+
+
+##kendala
+1. belum terbiasa menggunakan proxy, jadi sering terjadi error
+2. sering lost connection pada server
