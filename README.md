@@ -210,6 +210,7 @@ kemudian lakukan `service squid restart`
 Lalu pada Loguetown di command jalankan `apt-get update` dan `apt-get install lynx`
 dan coba jalankan di command `lynx google.com`
 
+![8](./img/8.png)
 ## NOMOR 9
 Agar transaksi jual beli lebih aman dan pengguna website ada dua orang, proxy dipasang autentikasi user proxy dengan enkripsi MD5 dengan dua username, yaitu luffybelikapalyyy dengan password luffy_yyy dan zorobelikapalyyy dengan password zoro_yyy.
 
@@ -243,6 +244,7 @@ kemudian lakukan `service squid restart`
 sebelum melakukan percobaan lynx, jangan lupa untuk mengeksport proxy dari water7 `export http_proxy="http://10.25.2.3:5000"`. 
 Kemudian lakukan `lynx google.com`
 
+![9](./img/9.png)
 ## NOMOR 10
 Transaksi jual beli tidak dilakukan setiap hari, oleh karena itu akses internet dibatasi hanya dapat diakses setiap hari Senin-Kamis pukul 07.00-11.00 dan setiap hari Selasa-Jum’at pukul 17.00-03.00 keesokan harinya (sampai Sabtu pukul 03.00)
 
